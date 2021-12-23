@@ -9,7 +9,7 @@ class Highlight
      *
      * @var array
      */
-    private $highlight;
+    private array $highlight;
 
     /**
      * Highlight constructor.
@@ -36,8 +36,8 @@ class Highlight
             $value = $this->highlight[$field];
 
             return $field === $key ? $value : implode(' ', $value);
-        } else {
-            return;
         }
+
+        return;
     }
 }

@@ -9,16 +9,14 @@ interface IndexerInterface
     /**
      * Update documents.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection  $models
-     * @return array
+     * @param Collection $models
      */
     public function update(Collection $models);
 
     /**
      * Delete documents.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection  $models
-     * @return array
+     * @param Collection $models
      */
     public function delete(Collection $models);
 }

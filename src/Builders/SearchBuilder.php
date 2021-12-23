@@ -11,12 +11,12 @@ class SearchBuilder extends FilterBuilder
      *
      * @var array
      */
-    public $rules = [];
+    public array $rules = [];
 
     /**
      * SearchBuilder constructor.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param Model $model
      * @param  string  $query
      * @param  callable|null  $callback
      * @param  bool  $softDelete
@@ -32,10 +32,10 @@ class SearchBuilder extends FilterBuilder
     /**
      * Add a rule.
      *
-     * @param  string|callable  $rule Search rule class name or function
+     * @param callable|string $rule Search rule class name or function
      * @return $this
      */
-    public function rule($rule)
+    public function rule(callable|string $rule): static
     {
         $this->rules[] = $rule;
 

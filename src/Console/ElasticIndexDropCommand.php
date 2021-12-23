@@ -5,6 +5,7 @@ namespace ScoutElastic\Console;
 use Illuminate\Console\Command;
 use ScoutElastic\Console\Features\RequiresIndexConfiguratorArgument;
 use ScoutElastic\Facades\ElasticClient;
+use ScoutElastic\IndexConfigurator;
 use ScoutElastic\Migratable;
 use ScoutElastic\Payloads\RawPayload;
 
@@ -27,7 +28,7 @@ class ElasticIndexDropCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $configurator = $this->getIndexConfigurator();
         $indexName = $this->resolveIndexName($configurator);
@@ -46,12 +47,12 @@ class ElasticIndexDropCommand extends Command
     }
 
     /**
-     * @param  \ScoutElastic\IndexConfigurator  $configurator
+     * @param  IndexConfigurator  $configurator
      * @return string
      */
-    protected function resolveIndexName($configurator)
+    protected function resolveIndexName($configurator): string
     {
-        if (in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (in_array(Migratable::class, class_uses_recursive($configurator), true)) {
             $payload = (new RawPayload)
                 ->set('name', $configurator->getWriteAlias())
                 ->get();

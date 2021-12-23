@@ -11,9 +11,9 @@ trait RequiresIndexConfiguratorArgument
     /**
      * Get the index configurator.
      *
-     * @return \ScoutElastic\IndexConfigurator
+     * @return IndexConfigurator
      */
-    protected function getIndexConfigurator()
+    protected function getIndexConfigurator(): IndexConfigurator
     {
         $configuratorClass = trim($this->argument('index-configurator'));
 
@@ -35,7 +35,7 @@ trait RequiresIndexConfiguratorArgument
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             [

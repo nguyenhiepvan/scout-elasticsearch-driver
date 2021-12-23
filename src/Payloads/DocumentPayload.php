@@ -10,7 +10,7 @@ class DocumentPayload extends TypePayload
     /**
      * DocumentPayload constructor.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param Model $model
      * @throws \Exception
      * @return void
      */

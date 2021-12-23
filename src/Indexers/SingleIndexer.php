@@ -12,7 +12,7 @@ class SingleIndexer implements IndexerInterface
     /**
      * {@inheritdoc}
      */
-    public function update(Collection $models)
+    public function update(Collection $models):array
     {
         $models->each(function ($model) {
             if ($model::usesSoftDelete() && config('scout.soft_delete', false)) {
@@ -33,7 +33,7 @@ class SingleIndexer implements IndexerInterface
             $payload = (new DocumentPayload($model))
                 ->set('body', $modelData);
 
-            if (in_array(Migratable::class, class_uses_recursive($indexConfigurator))) {
+            if (in_array(Migratable::class, class_uses_recursive($indexConfigurator), true)) {
                 $payload->useAlias('write');
             }
 

@@ -27,6 +27,7 @@ class ElasticUpdateMappingCommand extends Command
      * Handle the command.
      *
      * @return void
+     * @throws \Exception
      */
     public function handle()
     {
@@ -49,7 +50,7 @@ class ElasticUpdateMappingCommand extends Command
             ->set('body.'.$model->searchableAs(), $mapping)
             ->set('include_type_name', 'true');
 
-        if (in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (in_array(Migratable::class, class_uses_recursive($configurator), true)) {
             $payload->useAlias('write');
         }
 

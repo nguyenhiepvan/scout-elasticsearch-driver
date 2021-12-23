@@ -32,7 +32,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         $arguments = $this->modelArgument();
 
@@ -46,7 +46,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return bool
      */
-    protected function isTargetIndexExists()
+    protected function isTargetIndexExists(): bool
     {
         $targetIndex = $this->argument('target-index');
 
@@ -63,7 +63,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return void
      */
-    protected function createTargetIndex()
+    protected function createTargetIndex(): void
     {
         $targetIndex = $this->argument('target-index');
 
@@ -90,7 +90,7 @@ class ElasticMigrateModelCommand extends Command
      * @throws \Exception
      * @return void
      */
-    protected function updateTargetIndex()
+    protected function updateTargetIndex(): void
     {
         $targetIndex = $this->argument('target-index');
 
@@ -133,7 +133,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return void
      */
-    protected function updateTargetIndexMapping()
+    protected function updateTargetIndexMapping(): void
     {
         $sourceModel = $this->getModel();
         $sourceIndexConfigurator = $sourceModel->getIndexConfigurator();
@@ -174,10 +174,10 @@ class ElasticMigrateModelCommand extends Command
     /**
      * Check if an alias exists.
      *
-     * @param  string  $name
+     * @param string $name
      * @return bool
      */
-    protected function isAliasExists($name)
+    protected function isAliasExists(string $name): bool
     {
         $payload = (new RawPayload)
             ->set('name', $name)
@@ -190,10 +190,10 @@ class ElasticMigrateModelCommand extends Command
     /**
      * Get an alias.
      *
-     * @param  string  $name
+     * @param string $name
      * @return array
      */
-    protected function getAlias($name)
+    protected function getAlias(string $name): array
     {
         $getPayload = (new RawPayload)
             ->set('name', $name)
@@ -209,7 +209,7 @@ class ElasticMigrateModelCommand extends Command
      * @param  string  $name
      * @return void
      */
-    protected function deleteAlias($name)
+    protected function deleteAlias($name): void
     {
         $aliases = $this->getAlias($name);
 
@@ -240,7 +240,7 @@ class ElasticMigrateModelCommand extends Command
      * @param  string  $name
      * @return void
      */
-    protected function createAliasForTargetIndex($name)
+    protected function createAliasForTargetIndex($name): void
     {
         $targetIndex = $this->argument('target-index');
 
@@ -268,7 +268,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return void
      */
-    protected function importDocumentsToTargetIndex()
+    protected function importDocumentsToTargetIndex(): void
     {
         $sourceModel = $this->getModel();
 
@@ -283,7 +283,7 @@ class ElasticMigrateModelCommand extends Command
      *
      * @return void
      */
-    protected function deleteSourceIndex()
+    protected function deleteSourceIndex(): void
     {
         $sourceIndexConfigurator = $this
             ->getModel()
@@ -323,13 +323,14 @@ class ElasticMigrateModelCommand extends Command
      * Handle the command.
      *
      * @return void
+     * @throws Exception
      */
     public function handle()
     {
         $sourceModel = $this->getModel();
         $sourceIndexConfigurator = $sourceModel->getIndexConfigurator();
 
-        if (! in_array(Migratable::class, class_uses_recursive($sourceIndexConfigurator))) {
+        if (!in_array(Migratable::class, class_uses_recursive($sourceIndexConfigurator), true)) {
             $this->error(sprintf(
                 'The %s index configurator must use the %s trait.',
                 get_class($sourceIndexConfigurator),

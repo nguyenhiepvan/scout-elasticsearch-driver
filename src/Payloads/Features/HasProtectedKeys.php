@@ -9,7 +9,7 @@ trait HasProtectedKeys
      */
     public function set($key, $value)
     {
-        if (in_array($key, $this->protectedKeys)) {
+        if (in_array($key, $this->protectedKeys, true)) {
             return $this;
         }
 

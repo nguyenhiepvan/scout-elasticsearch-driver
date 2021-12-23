@@ -27,7 +27,7 @@ class ElasticIndexCreateCommand extends Command
      *
      * @return void
      */
-    protected function createIndex()
+    protected function createIndex(): void
     {
         $configurator = $this->getIndexConfigurator();
 
@@ -49,11 +49,11 @@ class ElasticIndexCreateCommand extends Command
      *
      * @return void
      */
-    protected function createWriteAlias()
+    protected function createWriteAlias(): void
     {
         $configurator = $this->getIndexConfigurator();
 
-        if (! in_array(Migratable::class, class_uses_recursive($configurator))) {
+        if (!in_array(Migratable::class, class_uses_recursive($configurator), true)) {
             return;
         }
 
@@ -76,10 +76,11 @@ class ElasticIndexCreateCommand extends Command
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->createIndex();
 
         $this->createWriteAlias();
+
     }
 }

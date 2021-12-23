@@ -12,9 +12,9 @@ trait RequiresModelArgument
     /**
      * Get the model.
      *
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return Model
      */
-    protected function getModel()
+    protected function getModel(): Model
     {
         $modelClass = trim($this->argument('model'));
 
@@ -22,7 +22,7 @@ trait RequiresModelArgument
 
         if (
             ! ($modelInstance instanceof Model) ||
-            ! in_array(Searchable::class, class_uses_recursive($modelClass))
+            !in_array(Searchable::class, class_uses_recursive($modelClass), true)
         ) {
             throw new InvalidArgumentException(sprintf(
                 'The %s class must extend %s and use the %s trait.',
@@ -40,7 +40,7 @@ trait RequiresModelArgument
      *
      * @return array
      */
-    protected function getArguments()
+    protected function getArguments(): array
     {
         return [
             [

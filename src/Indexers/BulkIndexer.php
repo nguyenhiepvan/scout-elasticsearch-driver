@@ -12,6 +12,7 @@ class BulkIndexer implements IndexerInterface
 {
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function update(Collection $models)
     {
@@ -20,7 +21,7 @@ class BulkIndexer implements IndexerInterface
 
         $bulkPayload = new TypePayload($model);
 
-        if (in_array(Migratable::class, class_uses_recursive($indexConfigurator))) {
+        if (in_array(Migratable::class, class_uses_recursive($indexConfigurator), true)) {
             $bulkPayload->useAlias('write');
         }
 
@@ -55,6 +56,7 @@ class BulkIndexer implements IndexerInterface
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public function delete(Collection $models)
     {

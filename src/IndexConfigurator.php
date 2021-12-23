@@ -11,28 +11,28 @@ abstract class IndexConfigurator
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The settings.
      *
      * @var array
      */
-    protected $settings = [];
+    protected array $settings = [];
 
     /**
      * The default mapping.
      *
      * @var array
      */
-    protected $defaultMapping = [];
+    protected array $defaultMapping = [];
 
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         $name = $this->name ?? Str::snake(str_replace('IndexConfigurator', '', class_basename($this)));
 
@@ -44,7 +44,7 @@ abstract class IndexConfigurator
      *
      * @return array
      */
-    public function getSettings()
+    public function getSettings(): array
     {
         return $this->settings;
     }
@@ -52,7 +52,7 @@ abstract class IndexConfigurator
     /**
      * @deprecated
      */
-    public function getDefaultMapping()
+    public function getDefaultMapping(): array
     {
         return $this->defaultMapping;
     }

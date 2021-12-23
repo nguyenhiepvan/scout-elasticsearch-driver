@@ -9,7 +9,7 @@ trait Migratable
      *
      * @return string
      */
-    public function getWriteAlias()
+    public function getWriteAlias(): string
     {
         return $this->getName().'_write';
     }

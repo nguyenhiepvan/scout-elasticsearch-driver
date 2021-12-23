@@ -2,6 +2,7 @@
 
 namespace ScoutElastic;
 
+use JetBrains\PhpStorm\ArrayShape;
 use ScoutElastic\Builders\SearchBuilder;
 
 class SearchRule
@@ -9,14 +10,14 @@ class SearchRule
     /**
      * The builder.
      *
-     * @var \ScoutElastic\Builders\SearchBuilder
+     * @var SearchBuilder
      */
-    protected $builder;
+    protected SearchBuilder $builder;
 
     /**
      * SearchRule constructor.
      *
-     * @param  \ScoutElastic\Builders\SearchBuilder  $builder
+     * @param SearchBuilder $builder
      * @return void
      */
     public function __construct(SearchBuilder $builder)
@@ -29,7 +30,7 @@ class SearchRule
      *
      * @return bool
      */
-    public function isApplicable()
+    public function isApplicable(): bool
     {
         return true;
     }
@@ -39,7 +40,7 @@ class SearchRule
      *
      * @return array|null
      */
-    public function buildHighlightPayload()
+    public function buildHighlightPayload(): ?array
     {
     }
 
@@ -48,6 +49,7 @@ class SearchRule
      *
      * @return array
      */
+    #[ArrayShape(['must' => "array[]"])]
     public function buildQueryPayload()
     {
         return [

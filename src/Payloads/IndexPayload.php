@@ -15,21 +15,21 @@ class IndexPayload extends RawPayload
      *
      * @var array
      */
-    protected $protectedKeys = [
+    protected array $protectedKeys = [
         'index',
     ];
 
     /**
      * The index configurator.
      *
-     * @var \ScoutElastic\IndexConfigurator
+     * @var IndexConfigurator
      */
-    protected $indexConfigurator;
+    protected IndexConfigurator $indexConfigurator;
 
     /**
      * IndexPayload constructor.
      *
-     * @param  \ScoutElastic\IndexConfigurator  $indexConfigurator
+     * @param IndexConfigurator $indexConfigurator
      * @return void
      */
     public function __construct(IndexConfigurator $indexConfigurator)
@@ -46,7 +46,7 @@ class IndexPayload extends RawPayload
      * @return $this
      * @throws \Exception
      */
-    public function useAlias($alias)
+    public function useAlias($alias): static
     {
         $aliasGetter = 'get'.ucfirst($alias).'Alias';
 

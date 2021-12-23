@@ -10,17 +10,17 @@ class SearchableModelMakeCommand extends ModelMakeCommand
     /**
      * {@inheritdoc}
      */
-    protected $name = 'make:searchable-model';
+    protected string $name = 'make:searchable-model';
 
     /**
      * {@inheritdoc}
      */
-    protected $description = 'Create a new searchable model';
+    protected string $description = 'Create a new searchable model';
 
     /**
      * {@inheritdoc}
      */
-    public function getStub()
+    public function getStub(): string
     {
         return __DIR__.'/stubs/searchable_model.stub';
     }
@@ -54,7 +54,7 @@ class SearchableModelMakeCommand extends ModelMakeCommand
      *
      * @return string
      */
-    protected function getIndexConfigurator()
+    protected function getIndexConfigurator(): string
     {
         return trim($this->option('index-configurator'));
     }
@@ -101,7 +101,7 @@ class SearchableModelMakeCommand extends ModelMakeCommand
      *
      * @var string
      */
-    public function handle()
+    public function handle(): void
     {
         $indexConfigurator = $this->getIndexConfigurator();
 
