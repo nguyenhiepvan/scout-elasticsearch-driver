@@ -12,7 +12,7 @@ class SingleIndexer implements IndexerInterface
     /**
      * {@inheritdoc}
      */
-    public function update(Collection $models):array
+    public function update(Collection $models)
     {
         $models->each(function ($model) {
             if ($model::usesSoftDelete() && config('scout.soft_delete', false)) {

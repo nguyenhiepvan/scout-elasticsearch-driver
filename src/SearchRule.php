@@ -40,7 +40,7 @@ class SearchRule
      *
      * @return array|null
      */
-    public function buildHighlightPayload(): ?array
+    public function buildHighlightPayload()
     {
     }
 

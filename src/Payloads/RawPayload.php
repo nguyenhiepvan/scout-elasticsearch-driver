@@ -20,7 +20,7 @@ class RawPayload
      * @param  mixed  $value
      * @return $this
      */
-    public function set($key, $value): static
+    public function set($key, $value)
     {
         if (! is_null($key)) {
             Arr::set($this->payload, $key, $value);
@@ -36,7 +36,7 @@ class RawPayload
      * @param  mixed  $value
      * @return $this
      */
-    public function setIfNotEmpty($key, $value): static
+    public function setIfNotEmpty($key, $value)
     {
         if (empty($value)) {
             return $this;
@@ -52,7 +52,7 @@ class RawPayload
      * @param  mixed  $value
      * @return $this
      */
-    public function setIfNotNull($key, $value): static
+    public function setIfNotNull($key, $value)
     {
         if (is_null($value)) {
             return $this;

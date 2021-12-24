@@ -28,4 +28,15 @@ class SearchRuleMakeCommand extends GeneratorCommand
     {
         return __DIR__.'/stubs/search_rule.stub';
     }
+
+    /**
+     * Get the desired class name from the input.
+     *
+     * @return string
+     */
+    protected function getNameInput(): string
+    {
+        $name = trim($this->argument('name'));
+        return "Elasticsearch/SearchRules/$name";
+    }
 }

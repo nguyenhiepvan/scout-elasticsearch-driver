@@ -12,7 +12,7 @@ class DummyClass extends IndexConfigurator
     /**
      * @var array
      */
-    protected $settings = [
+    protected array $settings = [
         //
     ];
 }

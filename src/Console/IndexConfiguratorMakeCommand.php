@@ -28,4 +28,15 @@ class IndexConfiguratorMakeCommand extends GeneratorCommand
     {
         return __DIR__.'/stubs/index_configurator.stub';
     }
+
+    /**
+     * Get the desired class name from the input.
+     *
+     * @return string
+     */
+    protected function getNameInput(): string
+    {
+        $name = trim($this->argument('name'));
+        return "Elasticsearch/IndexConfigurators/$name";
+    }
 }

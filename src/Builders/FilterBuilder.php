@@ -32,14 +32,14 @@ class FilterBuilder extends Builder
      *
      * @var int
      */
-    public int $offset;
+    public int $offset = 0;
 
     /**
      * The collapse parameter.
      *
      * @var string
      */
-    public string $collapse;
+    public string $collapse = "";
 
     /**
      * The select array.
@@ -53,7 +53,7 @@ class FilterBuilder extends Builder
      *
      * @var string
      */
-    public string $minScore;
+    public string $minScore = "";
 
     /**
      * FilterBuilder constructor.

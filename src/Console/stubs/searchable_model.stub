@@ -12,19 +12,19 @@ class DummyClass extends Model
     /**
      * @var string
      */
-    protected $indexConfigurator = DummyIndexConfigurator;
+    protected string $indexConfigurator = DummyIndexConfigurator;
 
     /**
      * @var array
      */
-    protected $searchRules = [
+    protected array $searchRules = [
         DummySearchRule
     ];
 
     /**
      * @var array
      */
-    protected $mapping = [
+    protected array $mapping = [
         //
     ];
 }

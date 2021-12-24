@@ -10,12 +10,12 @@ class SearchableModelMakeCommand extends ModelMakeCommand
     /**
      * {@inheritdoc}
      */
-    protected string $name = 'make:searchable-model';
+    protected $name = 'make:searchable-model';
 
     /**
      * {@inheritdoc}
      */
-    protected string $description = 'Create a new searchable model';
+    protected $description = 'Create a new searchable model';
 
     /**
      * {@inheritdoc}
